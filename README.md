@@ -39,3 +39,7 @@ cd paper && tectonic main.tex
 ```
 
 The provider in this repository is a mock. No AI provider currently publishes a sealing key.
+
+## License
+
+MIT, see [LICENSE](LICENSE).

@@ -1,0 +1,846 @@
+% refs.bib -- Sealed Skills: Provider-Bound Encryption and Extraction Resistance for LLM Agent Skills
+% Every entry below was checked against a primary page (arXiv abs, ACL Anthology, ACM/USENIX/NeurIPS/ICLR
+% proceedings, Springer/Crossref DOI record, IETF datatracker, or the vendor's own document) on 2026-09-27.
+% The URL each key was checked against is listed in related-work-notes.md ("Verified via").
+% Venue fields reflect the venue version when one was verified; otherwise a misc entry + arXiv, with any
+% author-stated acceptance recorded in `note` (not independently verified).
+
+% =====================================================================
+% 1. Prompt extraction / system-prompt leakage
+% =====================================================================
+
+@inproceedings{zhang2024effective,
+  author    = {Zhang, Yiming and Carlini, Nicholas and Ippolito, Daphne},
+  title     = {Effective Prompt Extraction from Language Models},
+  booktitle = {Proceedings of the First Conference on Language Modeling (COLM)},
+  year      = {2024},
+  url       = {https://openreview.net/forum?id=0o95CVdNuz},
+  eprint    = {2307.06865},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL}
+}
+
+@misc{perez2022ignore,
+  author    = {Perez, F{\'a}bio and Ribeiro, Ian},
+  title     = {Ignore Previous Prompt: Attack Techniques For Language Models},
+  year      = {2022},
+  eprint    = {2211.09527},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url       = {https://arxiv.org/abs/2211.09527},
+  note      = {ML Safety Workshop, NeurIPS 2022}
+}
+
+@misc{yu2023assessing,
+  author    = {Yu, Jiahao and Wu, Yuhang and Shu, Dong and Jin, Mingyu and Yang, Sabrina and Xing, Xinyu},
+  title     = {Assessing Prompt Injection Risks in 200+ Custom {GPTs}},
+  year      = {2023},
+  eprint    = {2311.11538},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  url       = {https://arxiv.org/abs/2311.11538},
+  note      = {ICLR 2024 Workshop on Secure and Trustworthy Large Language Models}
+}
+
+@inproceedings{hui2024pleak,
+  author    = {Hui, Bo and Yuan, Haolin and Gong, Neil and Burlina, Philippe and Cao, Yinzhi},
+  title     = {{PLeak}: Prompt Leaking Attacks against Large Language Model Applications},
+  booktitle = {Proceedings of the 2024 ACM SIGSAC Conference on Computer and Communications Security (CCS)},
+  year      = {2024},
+  publisher = {ACM},
+  doi       = {10.1145/3658644.3670370},
+  url       = {https://dl.acm.org/doi/10.1145/3658644.3670370},
+  eprint    = {2405.06823},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{wang2024raccoon,
+  author    = {Wang, Junlin and Yang, Tianyi and Xie, Roy and Dhingra, Bhuwan},
+  title     = {Raccoon: Prompt Extraction Benchmark of {LLM}-Integrated Applications},
+  booktitle = {Findings of the Association for Computational Linguistics: ACL 2024},
+  pages     = {13349--13365},
+  year      = {2024},
+  address   = {Bangkok, Thailand},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/2024.findings-acl.791},
+  url       = {https://aclanthology.org/2024.findings-acl.791/}
+}
+
+@inproceedings{agarwal2024prompt,
+  author    = {Agarwal, Divyansh and Fabbri, Alexander and Risher, Ben and Laban, Philippe and Joty, Shafiq and Wu, Chien-Sheng},
+  title     = {Prompt Leakage effect and mitigation strategies for multi-turn {LLM} Applications},
+  booktitle = {Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing: Industry Track},
+  pages     = {1255--1275},
+  year      = {2024},
+  address   = {Miami, Florida, US},
+  publisher = {Association for Computational Linguistics},
+  url       = {https://aclanthology.org/2024.emnlp-industry.94/},
+  note      = {arXiv version (2404.16251) titled ``Prompt Leakage effect and defense strategies for multi-turn LLM interactions''}
+}
+
+@misc{liang2024why,
+  author    = {Liang, Zi and Hu, Haibo and Ye, Qingqing and Xiao, Yaxin and Li, Haoyang},
+  title     = {Why Are My Prompts Leaked? Unraveling Prompt Extraction Threats in Customized Large Language Models},
+  year      = {2024},
+  eprint    = {2408.02416},
+  archivePrefix = {arXiv},
+  url       = {https://arxiv.org/abs/2408.02416}
+}
+
+@misc{sha2024prompt,
+  author    = {Sha, Zeyang and Zhang, Yang},
+  title     = {Prompt Stealing Attacks Against Large Language Models},
+  year      = {2024},
+  eprint    = {2402.12959},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  url       = {https://arxiv.org/abs/2402.12959}
+}
+
+@inproceedings{zhang2024extracting,
+  author    = {Zhang, Collin and Morris, John Xavier and Shmatikov, Vitaly},
+  title     = {Extracting Prompts by Inverting {LLM} Outputs},
+  booktitle = {Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  pages     = {14753--14777},
+  year      = {2024},
+  address   = {Miami, Florida, USA},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/2024.emnlp-main.819},
+  url       = {https://aclanthology.org/2024.emnlp-main.819/}
+}
+
+@inproceedings{toyer2024tensor,
+  author    = {Toyer, Sam and Watkins, Olivia and Mendes, Ethan Adrian and Svegliato, Justin and Bailey, Luke and Wang, Tiffany and Ong, Isaac and Elmaaroufi, Karim and Abbeel, Pieter and Darrell, Trevor and Ritter, Alan and Russell, Stuart},
+  title     = {Tensor Trust: Interpretable Prompt Injection Attacks from an Online Game},
+  booktitle = {The Twelfth International Conference on Learning Representations (ICLR)},
+  year      = {2024},
+  url       = {https://proceedings.iclr.cc/paper_files/paper/2024/hash/519c51529c3544b3430bd8b17d400365-Abstract-Conference.html},
+  eprint    = {2311.01011},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{schulhoff2023ignore,
+  author    = {Schulhoff, Sander and Pinto, Jeremy and Khan, Anaum and Bouchard, Louis-Fran{\c{c}}ois and Si, Chenglei and Anati, Svetlina and Tagliabue, Valen and Kost, Anson and Carnahan, Christopher and Boyd-Graber, Jordan},
+  title     = {Ignore This Title and {HackAPrompt}: Exposing Systemic Vulnerabilities of {LLMs} Through a Global Prompt Hacking Competition},
+  booktitle = {Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  pages     = {4945--4977},
+  year      = {2023},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/2023.emnlp-main.302},
+  url       = {https://doi.org/10.18653/v1/2023.emnlp-main.302}
+}
+
+@misc{das2025system,
+  author    = {Das, Badhan Chandra and Amini, M. Hadi and Wu, Yanzhao},
+  title     = {System Prompt Extraction Attacks and Defenses in Large Language Models},
+  year      = {2025},
+  eprint    = {2505.23817},
+  archivePrefix = {arXiv},
+  url       = {https://arxiv.org/abs/2505.23817}
+}
+
+% --- Skill-specific extraction / stealing (2026) ---
+
+@misc{wang2026blackbox,
+  author    = {Wang, Zihan and Zhang, Rui and Liu, Yu and Liu, Chi and Zhao, Qingchuan and Li, Hongwei and Xu, Guowen},
+  title     = {Black-Box Skill Stealing Attack from Proprietary {LLM} Agents: An Empirical Study},
+  year      = {2026},
+  eprint    = {2604.21829},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  url       = {https://arxiv.org/abs/2604.21829}
+}
+
+@misc{tsai2026daydreaming,
+  author    = {Tsai, Yu-Lin and Lu, Yu-An and Tsai, Ci-Yang and Lyu, Muxi and Popa, Raluca Ada and Yu, Chia-Mu},
+  title     = {Daydreaming: Stealing Hidden Agent Skills through Black-Box Task Interaction},
+  year      = {2026},
+  eprint    = {2608.26733},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  url       = {https://arxiv.org/abs/2608.26733}
+}
+
+@misc{hua2026behavioral,
+  author    = {Hua, Peichun and Xu, Haoxuan and Li, Mengyuan},
+  title     = {Behavioral Skill Reconstruction: Reconstructing Hidden Functionality from {LLM} Agent Skills},
+  year      = {2026},
+  eprint    = {2608.04192},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  url       = {https://arxiv.org/abs/2608.04192}
+}
+
+@misc{geng2026agent,
+  author    = {Geng, Jianing and He, Ruiqi and Fei, Zekun and Yi, Biao and Wu, Xuansheng and Wang, Ruijie and Liu, Zheli and Hu, Xia and Zeng, Qingkai},
+  title     = {Agent Skills Matter: Inferring Proprietary Skills from Execution Trajectories},
+  year      = {2026},
+  eprint    = {2607.25560},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  url       = {https://arxiv.org/abs/2607.25560}
+}
+
+@misc{lyu2026agentleak,
+  author    = {Lyu, Xiaoting and Wu, Yuhong and Han, Yufei and Liu, Shichang and Zhang, Liang and Wang, Bin and Wang, Bin and Ma, Xiaobo and Wang, Wei},
+  title     = {{AgentLeak}: Cloning Stronger {LLM} Agent Capabilities onto Weaker Agents Beyond Skill Stealing},
+  year      = {2026},
+  eprint    = {2609.07131},
+  archivePrefix = {arXiv},
+  url       = {https://arxiv.org/abs/2609.07131},
+  note      = {The arXiv author list names ``Bin Wang'' twice (two authors); kept as listed}
+}
+
+@misc{xu2026redact,
+  author    = {Xu, Shuwen and He, Zhitao and Fung, Yi R.},
+  title     = {{RedAct}: Redacting Agent Capability Traces for Procedural Skill Protection},
+  year      = {2026},
+  eprint    = {2606.10813},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  url       = {https://arxiv.org/abs/2606.10813}
+}
+
+@misc{zhao2026skillasapi,
+  author    = {Zhao, Ziwei and Gu, Yu and Liang, Haojun and Zhang, Chen and Ding, Xizhi},
+  title     = {Skill-as-{API}: Confidential Multi-Agent Coordination for Agentic Software Engineering},
+  year      = {2026},
+  eprint    = {2609.01677},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  url       = {https://arxiv.org/abs/2609.01677}
+}
+
+% =====================================================================
+% 2. Defences against prompt leakage / prompt IP protection
+% =====================================================================
+
+@inproceedings{jiang2025promptkeeper,
+  author    = {Jiang, Zhifeng and Jin, Zhihua and He, Guoliang},
+  title     = {{PromptKeeper}: Safeguarding System Prompts for {LLMs}},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2025},
+  pages     = {2712--2728},
+  year      = {2025},
+  address   = {Suzhou, China},
+  publisher = {Association for Computational Linguistics},
+  url       = {https://aclanthology.org/2025.findings-emnlp.147/},
+  eprint    = {2412.13426},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{pape2025prompt,
+  author    = {Pape, David and Mavali, Sina and Eisenhofer, Thorsten and Sch{\"o}nherr, Lea},
+  title     = {Prompt Obfuscation for Large Language Models},
+  booktitle = {34th USENIX Security Symposium (USENIX Security 25)},
+  pages     = {2323--2342},
+  year      = {2025},
+  publisher = {USENIX Association},
+  url       = {https://www.usenix.org/conference/usenixsecurity25/presentation/pape},
+  eprint    = {2409.11026},
+  archivePrefix = {arXiv}
+}
+
+@misc{zhuang2025proxyprompt,
+  author    = {Zhuang, Zhixiong and Nicolae, Maria-Irina and Wang, Hui-Po and Fritz, Mario},
+  title     = {{ProxyPrompt}: Securing System Prompts against Prompt Extraction Attacks},
+  year      = {2025},
+  eprint    = {2505.11459},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  url       = {https://arxiv.org/abs/2505.11459},
+  note      = {arXiv v2 comments state acceptance to Findings of ACL 2026}
+}
+
+@misc{wallace2024instruction,
+  author    = {Wallace, Eric and Xiao, Kai and Leike, Reimar and Weng, Lilian and Heidecke, Johannes and Beutel, Alex},
+  title     = {The Instruction Hierarchy: Training {LLMs} to Prioritize Privileged Instructions},
+  year      = {2024},
+  eprint    = {2404.13208},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  url       = {https://arxiv.org/abs/2404.13208}
+}
+
+@misc{li2026praglocker,
+  author    = {Li, Qinfeng and Bao, Yuntai and Hu, Jianghui and Zhang, Wenqi and Chen, Jintao and Zhu, Huifeng and Jin, Yier and Zhang, Xuhong},
+  title     = {{PragLocker}: Protecting Agent Intellectual Property in Untrusted Deployments via Non-Portable Prompts},
+  year      = {2026},
+  eprint    = {2605.05974},
+  archivePrefix = {arXiv},
+  url       = {https://arxiv.org/abs/2605.05974},
+  note      = {arXiv comments state acceptance to ICML 2026}
+}
+
+@misc{vanwyk2023protect,
+  author    = {van Wyk, M. A. and Bekker, M. and Richards, X. L. and Nixon, K. J.},
+  title     = {Protect Your Prompts: Protocols for {IP} Protection in {LLM} Applications},
+  year      = {2023},
+  eprint    = {2306.06297},
+  archivePrefix = {arXiv},
+  url       = {https://arxiv.org/abs/2306.06297}
+}
+
+@misc{gakh2025enhancing,
+  author    = {Gakh, Valerii and Bahsi, Hayretdin},
+  title     = {Enhancing Security in {LLM} Applications: A Performance Evaluation of Early Detection Systems},
+  year      = {2025},
+  eprint    = {2506.19109},
+  archivePrefix = {arXiv},
+  url       = {https://arxiv.org/abs/2506.19109}
+}
+
+@misc{deep2026evaluation,
+  author    = {Deep, Priyal and Emmons, Shane and Fox, Amy and Bacon, Kyle and McAllister, Kelley and Ortiz, Peter and Flautner, Krisztian},
+  title     = {Evaluation of Prompt Injection Defenses in Large Language Models},
+  year      = {2026},
+  eprint    = {2604.23887},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  url       = {https://arxiv.org/abs/2604.23887}
+}
+
+% =====================================================================
+% 3. Prompt injection (context)
+% =====================================================================
+
+@inproceedings{greshake2023not,
+  author    = {Greshake, Kai and Abdelnabi, Sahar and Mishra, Shailesh and Endres, Christoph and Holz, Thorsten and Fritz, Mario},
+  title     = {Not What You've Signed Up For: Compromising Real-World {LLM}-Integrated Applications with Indirect Prompt Injection},
+  booktitle = {Proceedings of the 16th ACM Workshop on Artificial Intelligence and Security (AISec '23)},
+  pages     = {79--90},
+  year      = {2023},
+  publisher = {ACM},
+  doi       = {10.1145/3605764.3623985},
+  url       = {https://dl.acm.org/doi/10.1145/3605764.3623985}
+}
+
+@inproceedings{debenedetti2024agentdojo,
+  author    = {Debenedetti, Edoardo and Zhang, Jie and Balunovi{\'c}, Mislav and Beurer-Kellner, Luca and Fischer, Marc and Tram{\`e}r, Florian},
+  title     = {{AgentDojo}: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for {LLM} Agents},
+  booktitle = {Advances in Neural Information Processing Systems 37 (NeurIPS 2024), Datasets and Benchmarks Track},
+  year      = {2024},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html},
+  eprint    = {2406.13352},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{zhan2024injecagent,
+  author    = {Zhan, Qiusi and Liang, Zhixiang and Ying, Zifan and Kang, Daniel},
+  title     = {{InjecAgent}: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents},
+  booktitle = {Findings of the Association for Computational Linguistics: ACL 2024},
+  pages     = {10471--10506},
+  year      = {2024},
+  address   = {Bangkok, Thailand},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/2024.findings-acl.624},
+  url       = {https://aclanthology.org/2024.findings-acl.624/}
+}
+
+@inproceedings{liu2024formalizing,
+  author    = {Liu, Yupei and Jia, Yuqi and Geng, Runpeng and Jia, Jinyuan and Gong, Neil Zhenqiang},
+  title     = {Formalizing and Benchmarking Prompt Injection Attacks and Defenses},
+  booktitle = {33rd USENIX Security Symposium (USENIX Security 24)},
+  pages     = {1831--1847},
+  year      = {2024},
+  publisher = {USENIX Association},
+  url       = {https://www.usenix.org/conference/usenixsecurity24/presentation/liu-yupei}
+}
+
+@misc{schmotz2026skillinject,
+  author    = {Schmotz, David and Beurer-Kellner, Luca and Abdelnabi, Sahar and Andriushchenko, Maksym},
+  title     = {Skill-Inject: Measuring Agent Vulnerability to Skill File Attacks},
+  year      = {2026},
+  eprint    = {2602.20156},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  url       = {https://arxiv.org/abs/2602.20156}
+}
+
+% =====================================================================
+% 4. Protecting models / prompts in deployment: confidential computing, watermarking, fingerprinting
+% =====================================================================
+
+@techreport{nvidia2023hopper,
+  author      = {Nertney, Rob},
+  title       = {Confidential Compute on {NVIDIA} {Hopper} {H100}},
+  institution = {NVIDIA Corporation},
+  type        = {White Paper},
+  number      = {WP-11459-001, Version 1.0},
+  month       = jul,
+  year        = {2023},
+  url         = {https://images.nvidia.com/aem-dam/en-zz/Solutions/data-center/HCC-Whitepaper-v1.0.pdf},
+  note        = {Accessed 2026-09-27}
+}
+
+@misc{nvidia2026nvtrust,
+  author       = {{NVIDIA Corporation}},
+  title        = {{NVIDIA} Trusted Computing Solutions (nvtrust) Documentation},
+  howpublished = {\url{https://docs.nvidia.com/nvtrust/index.html}},
+  year         = {2026},
+  note         = {Accessed 2026-09-27}
+}
+
+@misc{zhu2024confidential,
+  author    = {Zhu, Jianwei and Yin, Hang and Deng, Peng and Almeida, Aline and Zhou, Shunfan},
+  title     = {Confidential Computing on {NVIDIA} {Hopper} {GPUs}: A Performance Benchmark Study},
+  year      = {2024},
+  eprint    = {2409.03992},
+  archivePrefix = {arXiv},
+  url       = {https://arxiv.org/abs/2409.03992}
+}
+
+@misc{li2024confidential,
+  author    = {Li, Caihua and Gim, In and Zhong, Lin},
+  title     = {Confidential Prompting: Privacy-preserving {LLM} Inference on Cloud},
+  year      = {2024},
+  eprint    = {2409.19134},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  url       = {https://arxiv.org/abs/2409.19134},
+  note      = {Earlier versions titled ``Confidential Prompting: Protecting User Prompts from Cloud LLM Providers''}
+}
+
+@misc{apple2024pcc,
+  author       = {{Apple Security Engineering and Architecture}},
+  title        = {Private Cloud Compute: A new frontier for {AI} privacy in the cloud},
+  howpublished = {Apple Security Research Blog, \url{https://security.apple.com/blog/private-cloud-compute/}},
+  month        = jun,
+  year         = {2024},
+  note         = {Published 2024-06-10. Accessed 2026-09-27}
+}
+
+@inproceedings{kirchenbauer2023watermark,
+  author    = {Kirchenbauer, John and Geiping, Jonas and Wen, Yuxin and Katz, Jonathan and Miers, Ian and Goldstein, Tom},
+  title     = {A Watermark for Large Language Models},
+  booktitle = {Proceedings of the 40th International Conference on Machine Learning (ICML)},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {202},
+  pages     = {17061--17084},
+  year      = {2023},
+  publisher = {PMLR},
+  url       = {https://proceedings.mlr.press/v202/kirchenbauer23a.html}
+}
+
+@inproceedings{xu2024instructional,
+  author    = {Xu, Jiashu and Wang, Fei and Ma, Mingyu and Koh, Pang Wei and Xiao, Chaowei and Chen, Muhao},
+  title     = {Instructional Fingerprinting of Large Language Models},
+  booktitle = {Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers)},
+  pages     = {3277--3306},
+  year      = {2024},
+  address   = {Mexico City, Mexico},
+  publisher = {Association for Computational Linguistics},
+  url       = {https://aclanthology.org/2024.naacl-long.180/}
+}
+
+@inproceedings{yao2024promptcare,
+  author    = {Yao, Hongwei and Lou, Jian and Ren, Kui and Qin, Zhan},
+  title     = {{PromptCARE}: Prompt Copyright Protection by Watermark Injection and Verification},
+  booktitle = {2024 IEEE Symposium on Security and Privacy (SP)},
+  year      = {2024},
+  publisher = {IEEE},
+  url       = {https://ieeexplore.ieee.org/document/10646612/},
+  eprint    = {2308.02816},
+  archivePrefix = {arXiv}
+}
+
+% =====================================================================
+% 5. DRM, broadcast encryption, traitor tracing, limits of software protection
+% =====================================================================
+
+@inproceedings{fiat1994broadcast,
+  author    = {Fiat, Amos and Naor, Moni},
+  title     = {Broadcast Encryption},
+  booktitle = {Advances in Cryptology -- CRYPTO '93},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {773},
+  pages     = {480--491},
+  year      = {1994},
+  publisher = {Springer},
+  doi       = {10.1007/3-540-48329-2_40},
+  url       = {https://link.springer.com/chapter/10.1007/3-540-48329-2_40}
+}
+
+@inproceedings{chor1994tracing,
+  author    = {Chor, Benny and Fiat, Amos and Naor, Moni},
+  title     = {Tracing Traitors},
+  booktitle = {Advances in Cryptology -- CRYPTO '94},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {839},
+  pages     = {257--270},
+  year      = {1994},
+  publisher = {Springer},
+  doi       = {10.1007/3-540-48658-5_25},
+  url       = {https://link.springer.com/chapter/10.1007/3-540-48658-5_25}
+}
+
+@article{boneh1998collusion,
+  author    = {Boneh, Dan and Shaw, James},
+  title     = {Collusion-Secure Fingerprinting for Digital Data},
+  journal   = {IEEE Transactions on Information Theory},
+  volume    = {44},
+  number    = {5},
+  pages     = {1897--1905},
+  year      = {1998},
+  doi       = {10.1109/18.705568}
+}
+
+@inproceedings{biddle2003darknet,
+  author    = {Biddle, Peter and England, Paul and Peinado, Marcus and Willman, Bryan},
+  title     = {The Darknet and the Future of Content Protection},
+  booktitle = {Digital Rights Management: ACM CCS-9 Workshop, DRM 2002},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {2696},
+  pages     = {155--176},
+  year      = {2003},
+  publisher = {Springer},
+  doi       = {10.1007/978-3-540-44993-5_10},
+  url       = {https://link.springer.com/chapter/10.1007/978-3-540-44993-5_10},
+  note      = {Workshop version circulated as ``The Darknet and the Future of Content Distribution''}
+}
+
+@article{barak2012impossibility,
+  author    = {Barak, Boaz and Goldreich, Oded and Impagliazzo, Russell and Rudich, Steven and Sahai, Amit and Vadhan, Salil and Yang, Ke},
+  title     = {On the (Im)possibility of Obfuscating Programs},
+  journal   = {Journal of the ACM},
+  volume    = {59},
+  number    = {2},
+  pages     = {1--48},
+  year      = {2012},
+  doi       = {10.1145/2160158.2160159},
+  note      = {Preliminary version in CRYPTO 2001, LNCS 2139}
+}
+
+@inproceedings{carlini2019secret,
+  author    = {Carlini, Nicholas and Liu, Chang and Erlingsson, {\'U}lfar and Kos, Jernej and Song, Dawn},
+  title     = {The Secret Sharer: Evaluating and Testing Unintended Memorization in Neural Networks},
+  booktitle = {28th USENIX Security Symposium (USENIX Security 19)},
+  pages     = {267--284},
+  year      = {2019},
+  publisher = {USENIX Association},
+  url       = {https://www.usenix.org/conference/usenixsecurity19/presentation/carlini}
+}
+
+% =====================================================================
+% 6. Transparency logs, remote attestation, CPU TEEs
+% =====================================================================
+
+@misc{rfc9162,
+  author       = {Laurie, B. and Messeri, E. and Stradling, R.},
+  title        = {Certificate Transparency Version 2.0},
+  howpublished = {RFC 9162},
+  series       = {Request for Comments},
+  number       = {9162},
+  month        = dec,
+  year         = {2021},
+  publisher    = {RFC Editor},
+  doi          = {10.17487/RFC9162},
+  url          = {https://datatracker.ietf.org/doc/rfc9162/}
+}
+
+@misc{rfc6962,
+  author       = {Laurie, B. and Langley, A. and Kasper, E.},
+  title        = {Certificate Transparency},
+  howpublished = {RFC 6962},
+  series       = {Request for Comments},
+  number       = {6962},
+  month        = jun,
+  year         = {2013},
+  publisher    = {RFC Editor},
+  doi          = {10.17487/RFC6962},
+  url          = {https://datatracker.ietf.org/doc/rfc6962/}
+}
+
+@inproceedings{melara2015coniks,
+  author    = {Melara, Marcela S. and Blankstein, Aaron and Bonneau, Joseph and Felten, Edward W. and Freedman, Michael J.},
+  title     = {{CONIKS}: Bringing Key Transparency to End Users},
+  booktitle = {24th USENIX Security Symposium (USENIX Security 15)},
+  pages     = {383--398},
+  year      = {2015},
+  publisher = {USENIX Association},
+  url       = {https://www.usenix.org/conference/usenixsecurity15/technical-sessions/presentation/melara}
+}
+
+@misc{rfc9334,
+  author       = {Birkholz, H. and Thaler, D. and Richardson, M. and Smith, N. and Pan, W.},
+  title        = {Remote {ATtestation} {procedureS} ({RATS}) Architecture},
+  howpublished = {RFC 9334},
+  series       = {Request for Comments},
+  number       = {9334},
+  month        = jan,
+  year         = {2023},
+  publisher    = {RFC Editor},
+  doi          = {10.17487/RFC9334},
+  url          = {https://datatracker.ietf.org/doc/rfc9334/}
+}
+
+@techreport{amd2020sevsnp,
+  author      = {{Advanced Micro Devices, Inc.}},
+  title       = {{AMD SEV-SNP}: Strengthening {VM} Isolation with Integrity Protection and More},
+  institution = {Advanced Micro Devices, Inc.},
+  type        = {White Paper},
+  month       = jan,
+  year        = {2020},
+  url         = {https://www.amd.com/content/dam/amd/en/documents/epyc-business-docs/white-papers/SEV-SNP-strengthening-vm-isolation-with-integrity-protection-and-more.pdf},
+  note        = {AMD document 70366. Accessed 2026-09-27}
+}
+
+@misc{intel2026tdx,
+  author       = {{Intel Corporation}},
+  title        = {Intel{\textregistered} Trust Domain Extensions (Intel{\textregistered} {TDX})},
+  howpublished = {\url{https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html}},
+  year         = {2026},
+  note         = {Accessed 2026-09-27}
+}
+
+@article{cheng2024intel,
+  author    = {Cheng, Pau-Chen and Ozga, Wojciech and Valdez, Enriquillo and Ahmed, Salman and Gu, Zhongshu and Jamjoom, Hani and Franke, Hubertus and Bottomley, James},
+  title     = {Intel {TDX} Demystified: A Top-Down Approach},
+  journal   = {ACM Computing Surveys},
+  volume    = {56},
+  number    = {9},
+  pages     = {1--33},
+  year      = {2024},
+  doi       = {10.1145/3652597}
+}
+
+% =====================================================================
+% 7. Cryptographic building blocks and web identifiers
+% =====================================================================
+
+@misc{rfc9180,
+  author       = {Barnes, R. and Bhargavan, K. and Lipp, B. and Wood, C.},
+  title        = {Hybrid Public Key Encryption},
+  howpublished = {RFC 9180},
+  series       = {Request for Comments},
+  number       = {9180},
+  month        = feb,
+  year         = {2022},
+  publisher    = {RFC Editor},
+  doi          = {10.17487/RFC9180},
+  url          = {https://datatracker.ietf.org/doc/rfc9180/}
+}
+
+@misc{rfc8032,
+  author       = {Josefsson, S. and Liusvaara, I.},
+  title        = {Edwards-Curve Digital Signature Algorithm ({EdDSA})},
+  howpublished = {RFC 8032},
+  series       = {Request for Comments},
+  number       = {8032},
+  month        = jan,
+  year         = {2017},
+  publisher    = {RFC Editor},
+  doi          = {10.17487/RFC8032},
+  url          = {https://datatracker.ietf.org/doc/rfc8032/}
+}
+
+@article{bernstein2012high,
+  author    = {Bernstein, Daniel J. and Duif, Niels and Lange, Tanja and Schwabe, Peter and Yang, Bo-Yin},
+  title     = {High-speed high-security signatures},
+  journal   = {Journal of Cryptographic Engineering},
+  volume    = {2},
+  number    = {2},
+  pages     = {77--89},
+  year      = {2012},
+  doi       = {10.1007/s13389-012-0027-1},
+  note      = {Preliminary version in CHES 2011, LNCS 6917, pp. 124--142}
+}
+
+@inproceedings{hoang2015online,
+  author    = {Hoang, Viet Tung and Reyhanitabar, Reza and Rogaway, Phillip and Viz{\'a}r, Damian},
+  title     = {Online Authenticated-Encryption and its Nonce-Reuse Misuse-Resistance},
+  booktitle = {Advances in Cryptology -- CRYPTO 2015, Part I},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {9215},
+  pages     = {493--517},
+  year      = {2015},
+  publisher = {Springer},
+  doi       = {10.1007/978-3-662-47989-6_24}
+}
+
+@techreport{dworkin2007gcm,
+  author      = {Dworkin, Morris J.},
+  title       = {Recommendation for Block Cipher Modes of Operation: {Galois/Counter Mode} ({GCM}) and {GMAC}},
+  institution = {National Institute of Standards and Technology},
+  type        = {NIST Special Publication},
+  number      = {800-38D},
+  year        = {2007},
+  doi         = {10.6028/NIST.SP.800-38D},
+  url         = {https://doi.org/10.6028/NIST.SP.800-38D}
+}
+
+@misc{rfc7517,
+  author       = {Jones, M.},
+  title        = {{JSON} Web Key ({JWK})},
+  howpublished = {RFC 7517},
+  series       = {Request for Comments},
+  number       = {7517},
+  month        = may,
+  year         = {2015},
+  publisher    = {RFC Editor},
+  doi          = {10.17487/RFC7517},
+  url          = {https://datatracker.ietf.org/doc/rfc7517/}
+}
+
+@misc{rfc8615,
+  author       = {Nottingham, M.},
+  title        = {Well-Known Uniform Resource Identifiers ({URIs})},
+  howpublished = {RFC 8615},
+  series       = {Request for Comments},
+  number       = {8615},
+  month        = may,
+  year         = {2019},
+  publisher    = {RFC Editor},
+  doi          = {10.17487/RFC8615},
+  url          = {https://datatracker.ietf.org/doc/rfc8615/}
+}
+
+@misc{didweb,
+  author       = {Gribneau, Christian and Prorock, Michael and Steele, Orie and Terbu, Oliver and Xu, Mike and Zagidulin, Dmitri},
+  editor       = {Prorock, Michael and Terbu, Oliver},
+  title        = {did:web Method Specification},
+  howpublished = {W3C Credentials Community Group, unofficial draft, \url{https://w3c-ccg.github.io/did-method-web/}},
+  year         = {2026},
+  note         = {Accessed 2026-09-27}
+}
+
+% =====================================================================
+% 8. Agent skills and tool use
+% =====================================================================
+
+@misc{anthropic2025skillsblog,
+  author       = {Zhang, Barry and Lazuka, Keith and Murag, Mahesh},
+  title        = {Equipping agents for the real world with Agent Skills},
+  howpublished = {Anthropic Engineering Blog, \url{https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills}},
+  month        = oct,
+  year         = {2025},
+  note         = {Published 2025-10-16. Accessed 2026-09-27}
+}
+
+@misc{anthropic2026skillsdocs,
+  author       = {{Anthropic}},
+  title        = {Agent Skills (Claude Platform documentation)},
+  howpublished = {\url{https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview}},
+  year         = {2026},
+  note         = {Accessed 2026-09-27}
+}
+
+@misc{agentskills2026spec,
+  author       = {{Agent Skills project}},
+  title        = {Agent Skills Specification},
+  howpublished = {\url{https://agentskills.io/specification}},
+  year         = {2026},
+  note         = {Accessed 2026-09-27}
+}
+
+@misc{mcp2026spec,
+  author       = {{Model Context Protocol}},
+  title        = {Model Context Protocol Specification, Revision 2026-07-28},
+  howpublished = {\url{https://modelcontextprotocol.io/specification/2026-07-28}},
+  year         = {2026},
+  note         = {Accessed 2026-09-27}
+}
+
+@misc{mcp2026skillsext,
+  author       = {{Model Context Protocol Skills Over MCP Working Group}},
+  title        = {Skills Extension (io.modelcontextprotocol/skills), {SEP}-2640},
+  howpublished = {\url{https://modelcontextprotocol.io/extensions/skills/overview}},
+  year         = {2026},
+  note         = {SEP-2640 marked Final, merged 2026-09-13. Accessed 2026-09-27}
+}
+
+@inproceedings{schick2023toolformer,
+  author    = {Schick, Timo and Dwivedi-Yu, Jane and Dess{\`i}, Roberto and Raileanu, Roberta and Lomeli, Maria and Hambro, Eric and Zettlemoyer, Luke and Cancedda, Nicola and Scialom, Thomas},
+  title     = {Toolformer: Language Models Can Teach Themselves to Use Tools},
+  booktitle = {Advances in Neural Information Processing Systems 36 (NeurIPS 2023)},
+  pages     = {68539--68551},
+  year      = {2023},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2023/hash/d842425e4bf79ba039352da0f658a906-Abstract-Conference.html}
+}
+
+@inproceedings{yao2023react,
+  author    = {Yao, Shunyu and Zhao, Jeffrey and Yu, Dian and Du, Nan and Shafran, Izhak and Narasimhan, Karthik and Cao, Yuan},
+  title     = {{ReAct}: Synergizing Reasoning and Acting in Language Models},
+  booktitle = {The Eleventh International Conference on Learning Representations (ICLR)},
+  year      = {2023},
+  url       = {https://openreview.net/forum?id=WE_vluYUL-X},
+  eprint    = {2210.03629},
+  archivePrefix = {arXiv}
+}
+
+@misc{xu2026agentskills,
+  author    = {Xu, Renjun and Yan, Yang},
+  title     = {Agent Skills for Large Language Models: Architecture, Acquisition, Security, and the Path Forward},
+  year      = {2026},
+  eprint    = {2602.12430},
+  archivePrefix = {arXiv},
+  url       = {https://arxiv.org/abs/2602.12430},
+  note      = {arXiv comments: Agent Skills '26 Workshop at the ACM Conference on AI and Agentic Systems 2026}
+}
+
+% =====================================================================
+% 9. Evaluation metrics and models
+% =====================================================================
+
+@inproceedings{lin2004rouge,
+  author    = {Lin, Chin-Yew},
+  title     = {{ROUGE}: A Package for Automatic Evaluation of Summaries},
+  booktitle = {Text Summarization Branches Out},
+  pages     = {74--81},
+  year      = {2004},
+  address   = {Barcelona, Spain},
+  publisher = {Association for Computational Linguistics},
+  url       = {https://aclanthology.org/W04-1013/}
+}
+
+@inproceedings{papineni2002bleu,
+  author    = {Papineni, Kishore and Roukos, Salim and Ward, Todd and Zhu, Wei-Jing},
+  title     = {{Bleu}: a Method for Automatic Evaluation of Machine Translation},
+  booktitle = {Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics},
+  pages     = {311--318},
+  year      = {2002},
+  address   = {Philadelphia, Pennsylvania, USA},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.3115/1073083.1073135},
+  url       = {https://aclanthology.org/P02-1040/}
+}
+
+@inproceedings{reimers2019sbert,
+  author    = {Reimers, Nils and Gurevych, Iryna},
+  title     = {Sentence-{BERT}: Sentence Embeddings using {Siamese} {BERT}-Networks},
+  booktitle = {Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)},
+  pages     = {3980--3990},
+  year      = {2019},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/D19-1410},
+  url       = {https://aclanthology.org/D19-1410/}
+}
+
+@misc{nussbaum2024nomic,
+  author    = {Nussbaum, Zach and Morris, John X. and Duderstadt, Brandon and Mulyar, Andriy},
+  title     = {Nomic Embed: Training a Reproducible Long Context Text Embedder},
+  year      = {2024},
+  eprint    = {2402.01613},
+  archivePrefix = {arXiv},
+  url       = {https://arxiv.org/abs/2402.01613},
+  note      = {Accepted to Transactions on Machine Learning Research (TMLR); OpenReview id IPmzyQSiQE}
+}
+
+@misc{grattafiori2024llama3,
+  author    = {Grattafiori, Aaron and Dubey, Abhimanyu and Jauhri, Abhinav and Pandey, Abhinav and Kadian, Abhishek and others},
+  title     = {The {Llama} 3 Herd of Models},
+  year      = {2024},
+  eprint    = {2407.21783},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  url       = {https://arxiv.org/abs/2407.21783}
+}
+
+@misc{qwen2025qwen25,
+  author    = {{Qwen Team} and Yang, An and Yang, Baosong and Zhang, Beichen and Hui, Binyuan and others},
+  title     = {{Qwen2.5} Technical Report},
+  year      = {2024},
+  eprint    = {2412.15115},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url       = {https://arxiv.org/abs/2412.15115}
+}

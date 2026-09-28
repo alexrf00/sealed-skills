@@ -1,0 +1,38 @@
+\section{Background}
+\label{sec:background}
+
+\paragraph{Agent skills.}
+Modern LLM agents extend a general model with packaged procedural knowledge. In Anthropic's Agent
+Skills format~\citep{anthropic2025skillsblog,agentskills2026spec}, a skill is a directory whose entry point, \texttt{SKILL.md},
+carries a short name and description in YAML front matter followed by free-form instructions; the
+directory may also hold scripts the agent can execute and reference documents it reads on demand.
+Only the description is kept in context permanently. The body is loaded when the agent decides the
+skill is relevant, and scripts run in the agent's code-execution environment. Skills are therefore
+at once \emph{prompt text} and \emph{software}, and both halves can embody an author's know-how.
+
+\paragraph{Hybrid public-key encryption.}
+HPKE~\citep{rfc9180} combines a key-encapsulation mechanism, a key-derivation function and an AEAD
+into a single primitive for encrypting to a recipient's public key. Its \emph{info} parameter is
+bound into the key schedule, so a ciphertext produced under one context string cannot be opened
+under another. We use the suite DHKEM(X25519, HKDF-SHA256), HKDF-SHA256 and AES-256-GCM
+(registry identifiers \texttt{0x0020}, \texttt{0x0001}, \texttt{0x0002}) in base mode.
+
+\paragraph{Online authenticated encryption.}
+Large payloads are encrypted in chunks with the STREAM construction of
+\citet{hoang2015online}: each chunk is sealed with an AEAD under a nonce that encodes its index and
+whether it is the final chunk, which prevents reordering, truncation and extension without buffering
+the whole ciphertext. We instantiate the per-chunk AEAD with AES-GCM~\citep{dworkin2007gcm}.
+
+\paragraph{Transparency and attestation.}
+Certificate Transparency~\citep{rfc9162} and key transparency systems such as
+CONIKS~\citep{melara2015coniks} make key bindings publicly auditable, so a key server that equivocates
+(shows different keys to different clients) is detectable. Remote attestation~\citep{rfc9334}, as
+provided by confidential-computing platforms such as AMD SEV-SNP~\citep{amd2020sevsnp} and Intel
+TDX~\citep{intel2026tdx}, lets a relying party verify that a key was generated inside, and is
+usable only by, a measured software environment.
+
+\paragraph{Prompt extraction.}
+A deployed LLM's hidden instructions can often be recovered by simply asking for them, or by
+indirect requests such as translation or continuation~\citep{perez2022ignore,zhang2024effective}.
+Because a loaded skill is placed in the model's context exactly like a system prompt, every such
+attack applies to skills.

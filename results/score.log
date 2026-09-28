@@ -1,0 +1,40 @@
+featurised 0/896
+featurised 50/896
+featurised 100/896
+featurised 150/896
+featurised 200/896
+featurised 250/896
+featurised 300/896
+featurised 350/896
+featurised 400/896
+featurised 450/896
+featurised 500/896
+featurised 550/896
+featurised 600/896
+featurised 650/896
+featurised 700/896
+featurised 750/896
+featurised 800/896
+featurised 850/896
+{
+  "llama3.1:8b|guard=False": {
+    "full": 0.3542,
+    "substantial": 0.7188,
+    "benign_success": 1.0
+  },
+  "llama3.1:8b|guard=True": {
+    "full": 0.1354,
+    "substantial": 0.1875,
+    "benign_success": 0.6562
+  },
+  "qwen2.5:7b|guard=False": {
+    "full": 0.4115,
+    "substantial": 0.7448,
+    "benign_success": 0.9688
+  },
+  "qwen2.5:7b|guard=True": {
+    "full": 0.1875,
+    "substantial": 0.4635,
+    "benign_success": 0.9688
+  }
+}

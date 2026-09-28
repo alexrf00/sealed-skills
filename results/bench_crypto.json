@@ -1,0 +1,83 @@
+{
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.9",
+  "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+  "by_size": [
+    {
+      "bytes": 1000,
+      "seal_ms": 0.2525999989302363,
+      "seal_p95_ms": 0.4263400005584117,
+      "open_ms": 0.3580999982659705,
+      "open_p95_ms": 0.5661899998813169,
+      "payload_overhead_bytes": 9263
+    },
+    {
+      "bytes": 10000,
+      "seal_ms": 0.3045499979634769,
+      "seal_p95_ms": 0.4261850037437398,
+      "open_ms": 0.39044999721227214,
+      "open_p95_ms": 0.5709700009902008,
+      "payload_overhead_bytes": 10503
+    },
+    {
+      "bytes": 100000,
+      "seal_ms": 0.5155500039109029,
+      "seal_p95_ms": 0.743144996886258,
+      "open_ms": 0.5999999993946403,
+      "open_p95_ms": 0.8230750001530396,
+      "payload_overhead_bytes": 2439
+    },
+    {
+      "bytes": 1000000,
+      "seal_ms": 2.535449999413686,
+      "seal_p95_ms": 3.1585799955792027,
+      "open_ms": 2.3206000005302485,
+      "open_p95_ms": 2.66882500036445,
+      "payload_overhead_bytes": 3783
+    },
+    {
+      "bytes": 10000000,
+      "seal_ms": 33.365800001774915,
+      "seal_p95_ms": 36.96990000025835,
+      "open_ms": 20.703949998278404,
+      "open_p95_ms": 21.577500003331807,
+      "payload_overhead_bytes": 6935
+    },
+    {
+      "bytes": 64000000,
+      "seal_ms": 215.99820000119507,
+      "seal_p95_ms": 221.6742000018712,
+      "open_ms": 132.82020000042394,
+      "open_p95_ms": 144.27479999721982,
+      "payload_overhead_bytes": 25879
+    }
+  ],
+  "by_recipients": [
+    {
+      "recipients": 1,
+      "seal_ms": 0.3850499997497536,
+      "open_last_recipient_ms": 0.6687000022793654,
+      "manifest_bytes": 688
+    },
+    {
+      "recipients": 4,
+      "seal_ms": 0.6595999984710943,
+      "open_last_recipient_ms": 0.4412499984027818,
+      "manifest_bytes": 1456
+    },
+    {
+      "recipients": 16,
+      "seal_ms": 2.5618500003474765,
+      "open_last_recipient_ms": 0.5576000039582141,
+      "manifest_bytes": 4534
+    },
+    {
+      "recipients": 64,
+      "seal_ms": 8.920000000216532,
+      "open_last_recipient_ms": 0.5530000053113326,
+      "manifest_bytes": 16870
+    }
+  ],
+  "add_recipient_10MB_ms": 0.19024999710381962,
+  "reseal_10MB_2recipients_ms": 33.77465000085067
+}

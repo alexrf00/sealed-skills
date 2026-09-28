@@ -1,0 +1,13 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+Agent skills are becoming a medium for selling expertise, and today they ship as plain text. \sys{}
+let an owner encrypt a skill to the public key an AI provider publishes on its domain, without any
+handshake, so that only that provider's servers can open it and no client ever receives it. Our
+prototype shows the cryptographic cost is negligible next to model inference. Our measurements show
+that the harder problem sits at the model's output: once a skill is in context, a user can
+extract much of it, guard instructions and output filters reduce but do not eliminate this, and
+every filter trades leakage against legitimate use. For content that must stay secret, the answer
+is architectural: keep it behind an owner-hosted tool and out of the model's context entirely. We
+release our implementation, corpus and attack set to support further work on confidential context
+for LLM agents.

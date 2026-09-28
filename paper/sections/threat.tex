@@ -1,0 +1,48 @@
+\section{System and Threat Model}
+\label{sec:threat}
+
+\paragraph{Parties.}
+A \emph{skill owner} $O$ authors a skill and holds an Ed25519 signing key~\citep{rfc8032}. An
+\emph{AI provider} $P$ operates a model and an agent runtime on its own servers and publishes an
+HPKE public key $pk_P$ at a well-known URL on its domain~\citep{rfc8615}. A \emph{client} is any
+application through which an \emph{end user} $U$ talks to the agent: a web chat, a desktop app, a
+command-line agent, or a third party's integration. Clients run on hardware the user controls. A
+\emph{distribution channel} (marketplace, mirror, CDN) stores and serves sealed packages.
+
+\paragraph{Goals.}
+\begin{description}[leftmargin=1.2em]
+  \item[G1 Recipient confidentiality.] Only providers named by the owner can recover the skill
+  plaintext from a package.
+  \item[G2 No handshake.] The owner can seal for a provider using only public information the
+  provider already publishes, without any message to the provider.
+  \item[G3 Integrity and binding.] Modified packages are rejected, and a key wrapped for one package
+  cannot be used to open another.
+  \item[G4 Client exclusion.] The plaintext never reaches the client or the end user as a file.
+  \item[G5 Output confidentiality.] The end user cannot recover the skill's contents from the
+  agent's outputs.
+\end{description}
+G1--G4 are cryptographic or architectural properties. G5 is not: the model must read the skill in
+clear text to follow it, and its outputs go to the user. We treat G5 as a quantity to be measured
+and reduced (\cref{sec:eval}), not a property to be proved.
+
+\paragraph{Adversaries.}
+\begin{itemize}
+  \item $\mathcal{A}_{\text{dist}}$ obtains packages from any channel and controls the network.
+  \item $\mathcal{A}_{\text{prov}}$ is an AI provider that is not a recipient but may observe
+  recipient entries and publish its own keys.
+  \item $\mathcal{A}_{\text{client}}$ is an end user with full control of their device and client,
+  including memory, network traffic and saved transcripts.
+  \item $\mathcal{A}_{\text{query}}$ is an end user who interacts with the agent through its normal
+  interface, adaptively and over multiple turns, and whose goal is to reconstruct the skill.
+  \item $\mathcal{A}_{\text{dns}}$ controls the network path or DNS for a provider's domain at the
+  moment an owner fetches the key.
+\end{itemize}
+
+\paragraph{Trust assumptions and non-goals.}
+The recipient provider is trusted with the plaintext: its model must read the skill, so no scheme
+can hide the skill from it. We assume the provider protects its private key, ideally inside an
+attested environment, and honours the confidentiality policy it publishes. Models running on
+user-controlled hardware (for example open-weight models run locally) are out of scope, because
+whoever controls the hardware controls the key. We do not attempt to prevent users from learning
+what a skill \emph{does} by observing its behaviour, and we do not address watermarking of model
+outputs.

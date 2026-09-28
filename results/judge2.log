@@ -1,0 +1,31 @@
+judged 0/896
+Traceback (most recent call last):
+  File "C:\Users\alexr\Documents\Projects\sealed-skills\experiments\judge2.py", line 117, in <module>
+    main()
+  File "C:\Users\alexr\Documents\Projects\sealed-skills\experiments\judge2.py", line 106, in main
+    kept, raw = judge(r["skill"], judge_text(rep["text"], cache))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alexr\Documents\Projects\sealed-skills\experiments\judge2.py", line 76, in judge
+    r.raise_for_status()
+  File "C:\Users\alexr\Documents\Projects\sealed-skills\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http://127.0.0.1:11434/api/chat
+judged 0/896
+judged 50/896
+judged 100/896
+judged 150/896
+judged 200/896
+judged 250/896
+judged 300/896
+judged 350/896
+judged 400/896
+judged 450/896
+judged 500/896
+judged 550/896
+judged 600/896
+judged 650/896
+judged 700/896
+judged 750/896
+judged 800/896
+judged 850/896
+done 986

@@ -1,0 +1,53 @@
+\section{Security Analysis}
+\label{sec:security}
+
+We argue each goal informally, reducing to standard assumptions on the primitives.
+
+\paragraph{G1 against $\mathcal{A}_{\text{dist}}$ and $\mathcal{A}_{\text{prov}}$.}
+The adversary sees $C$, the header $h$ and the recipient entries $(enc_i, w_i)$. HPKE in base mode
+is IND-CCA2 secure under the Gap-Diffie--Hellman assumption on X25519 and standard assumptions on
+HKDF and the AEAD~\citep{rfc9180}, so the $w_i$ reveal nothing about $\cek$ to anyone without some
+$sk_{P_i}$. Given that $\cek$ is uniformly random and hidden, confidentiality of $\mathsf{tar}(D)$
+follows from the nonce-based AE security of AES-GCM as used by STREAM~\citep{hoang2015online}, since
+every chunk nonce is unique under a fresh key. A non-recipient provider gains nothing from
+publishing its own keys: it is simply not among the $pk_{P_i}$. It also cannot impersonate a
+recipient by relabelling itself, because unwrapping requires the recipient's private key; our test
+suite exercises exactly this case.
+
+\paragraph{G2.} Sealing reads only the provider's key document; no step sends a message to the
+provider. The owner's confidence that $pk_P$ belongs to $P$ reduces to the WebPKI plus the optional
+pinning, multi-vantage and transparency checks. $\mathcal{A}_{\text{dns}}$ can substitute a key
+only at the moment of a fetch and only if all these checks fail together; a substituted key is
+then recorded in the manifest's \texttt{key\_id} and detectable later. This is the main security
+cost of G2 relative to an onboarding handshake, which can pin keys out of band.
+
+\paragraph{G3.} The owner's signature covers the entire manifest, including the payload hash and
+length, so under EUF-CMA security of Ed25519 any modification of the manifest or payload is
+rejected. STREAM's final-chunk flag rejects truncation even if an adversary could also replace the
+hash. The HPKE \emph{info} string contains $\mathsf{SHA256}(h)$, so a recipient entry copied into a
+different package (for example, to launder a skill under a new identifier) fails to unwrap: the
+recipient's key schedule differs. We verified this transplant case experimentally
+(\cref{sec:impl}).
+
+\paragraph{G4 against $\mathcal{A}_{\text{client}}$.} By construction the client holds only a
+reference and a licence; neither $\cek$, $sk_P$ nor plaintext ever reaches it. A licence authorises
+use through the provider and is useless for decryption. This property depends on the provider's
+architecture, not on cryptography: a provider that decrypted in its desktop client would lose it
+immediately, for the reasons given in \cref{sec:boundary}.
+
+\paragraph{G5 against $\mathcal{A}_{\text{query}}$.} No cryptographic argument applies: the model
+is an oracle that has read the plaintext, and $\mathcal{A}_{\text{query}}$ may query it adaptively.
+Output filters are heuristics with a fundamental gap: any filter that blocks all replies carrying
+information about the skill also blocks the skill's legitimate use, because applying a rule
+reveals something about the rule. Semantic reconstruction over many sessions (paraphrase,
+translation into a language the filter does not model, or learning thresholds by probing) cannot
+be ruled out. The evaluation in \cref{sec:eval} therefore measures how much each defence reduces
+extraction and at what cost to utility.
+
+\paragraph{Revocation.}
+Without a handshake there is no revocation list the provider has agreed to honour. The owner's
+levers are (i) not issuing new licence tokens, which works with providers that check licences, and
+(ii) publishing a new version under a fresh $\cek$ that omits a recipient. Neither retracts what a
+former recipient already decrypted. Owners who need enforceable terms, audit feeds or instant
+revocation can layer an onboarding agreement or an online key-release service on top of the same
+package format.

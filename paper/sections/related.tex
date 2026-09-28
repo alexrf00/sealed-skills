@@ -1,0 +1,81 @@
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Cryptographic protection of prompts.}
+The closest prior design is the pair of protocols of \citet{vanwyk2023protect}. A purchased prompt
+carries an encrypted core, and a ``decryption bridge'' that holds the key decrypts it before it
+reaches the model; the authors identify the AI provider's servers as the best location for that
+bridge and acknowledge that prompt extraction remains open. \sys{} differ in four ways: the owner
+seals with a standard KEM/AEAD (HPKE) to a key the provider publishes, with no handshake and no
+bridge operator; the provider key can be bound to attested hardware and monitored through
+transparency logs; the protected object is a whole skill (instructions, scripts and data), with
+per-customer canaries for attribution; and we \emph{measure} the extraction channel they only name,
+including the script channel. Work on protecting prompts without cryptography is complementary:
+prompt obfuscation~\citep{pape2025prompt}, proxy prompts~\citep{zhuang2025proxyprompt} and
+model-locked prompts~\citep{li2026praglocker} make a stolen prompt less useful, while
+PromptCARE~\citep{yao2024promptcare} watermarks prompts for later verification. General-purpose
+obfuscation is impossible in theory~\citep{barak2012impossibility}, which is one reason we place
+the root of confidentiality in encryption and an architectural boundary rather than in the prompt.
+
+\paragraph{The reverse direction: protecting users from providers.}
+Confidential computing for LLM inference mostly protects \emph{user} data from the provider:
+Apple's Private Cloud Compute~\citep{apple2024pcc}, GPU confidential computing on NVIDIA
+Hopper~\citep{nvidia2023hopper,nvidia2026nvtrust}, whose overhead for typical LLM queries has been
+measured below 7\%~\citep{zhu2024confidential}, and Confidential Prompting~\citep{li2024confidential},
+which also keeps model weights from users. \sys{} reuse the same machinery with the parties
+rearranged: a third party's skill is protected from the end user, and the attested provider
+environment is the only place it can be decrypted.
+
+\paragraph{Prompt extraction.}
+Prompt leaking was named as an attack goal by \citet{perez2022ignore} and measured systematically by
+\citet{zhang2024effective}, who count an extraction as successful when ROUGE-L
+recall~\citep{lin2004rouge} reaches 0.9, extract more than half of hidden prompts on each of 11
+models, and show that a 5-gram output filter is evaded by asking for interleaved symbols or a
+cipher. Raccoon~\citep{wang2024raccoon} benchmarks attacks and in-context defences, finding that
+defensive instructions help strong models much more than open ones. Multi-turn sycophancy raises
+attack success substantially~\citep{agarwal2024prompt}; optimised queries~\citep{hui2024pleak},
+output-only inversion~\citep{zhang2024extracting} and reconstruction from generated
+answers~\citep{sha2024prompt} widen the attack surface; and custom GPTs leaked system prompts and
+uploaded files at very high rates, with Code Interpreter enabling extraction in every tested
+case~\citep{yu2023assessing}. Human-generated attack corpora include Tensor
+Trust~\citep{toyer2024tensor} and HackAPrompt~\citep{schulhoff2023ignore}. Our threat model is the
+same, but sealing removes every non-model path to the plaintext, so the model's output is the only
+channel left, and we measure it for multi-rule skills on small open models.
+
+\paragraph{Defences against leakage.}
+The instruction hierarchy~\citep{wallace2024instruction} trains models to prioritise system
+instructions; our guard instruction is its prompt-only counterpart. PromptKeeper detects leakage
+with a hypothesis test and regenerates from a dummy prompt~\citep{jiang2025promptkeeper}. In-prompt
+canary words have been found ineffective for \emph{detecting} leaks~\citep{gakh2025enhancing}; we use
+canaries for \emph{attribution} after the fact, following traitor
+tracing~\citep{chor1994tracing} and collusion-secure fingerprinting~\citep{boneh1998collusion}, and
+note that plain-string canaries can be removed by colluding customers who compare copies.
+
+\paragraph{Skill stealing.}
+A 2026 line of work targets agent skills directly. \citet{wang2026blackbox} extract skill
+definitions from commercial agents. Daydreaming~\citep{tsai2026daydreaming} reconstructs hidden
+multi-file skills from ordinary task results alone, recovering most of a skill's capability without
+ever asking for its text; SkillClone~\citep{hua2026behavioral}, SigLeak~\citep{geng2026agent} and
+AgentLeak~\citep{lyu2026agentleak} reconstruct or clone skills from behaviour and execution traces,
+and trace redaction with behavioural watermarks has been proposed as a
+defence~\citep{xu2026redact}. These results bound what any artifact-level protection can achieve:
+sealing and disclosure filtering protect the skill's \emph{text, code and data}, not its
+\emph{function}, which remains learnable from outputs. Our evaluation accordingly measures artifact
+leakage, and our recommendation to keep secret logic behind an owner-hosted tool protects the
+implementation but not its input--output behaviour. Skill-as-API~\citep{zhao2026skillasapi}
+concurrently proposes keeping skill bodies in the owner's process.
+
+\paragraph{Skills, tools and injection.}
+Agent Skills load by progressive disclosure~\citep{anthropic2025skillsblog,agentskills2026spec}, and
+the documentation notes that scripts run through bash and only their output enters
+context~\citep{anthropic2026skillsdocs}, a convention rather than an enforced boundary, which our
+case study probes. The Model Context Protocol~\citep{mcp2026spec} is the standard owner-hosted tool
+channel; its Skills extension~\citep{mcp2026skillsext} serves skill text to hosts with integrity
+manifests but, by design, delivers the text into the model's context, so secret logic belongs in
+server-side MCP \emph{tools} rather than MCP-served \emph{skills}. Tool use builds on
+Toolformer~\citep{schick2023toolformer} and ReAct~\citep{yao2023react}. Finally, skills are an
+injection vector: malicious skill files achieve high attack success~\citep{schmotz2026skillinject},
+and community skills frequently contain vulnerabilities~\citep{xu2026agentskills}; see also indirect
+prompt injection~\citep{greshake2023not,liu2024formalizing,zhan2024injecagent,debenedetti2024agentdojo}.
+Sealing makes a skill less auditable by the customer who runs it, which sharpens this provenance
+problem; we return to it in \cref{sec:discussion}.

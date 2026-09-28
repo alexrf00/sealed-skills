@@ -1,0 +1,20 @@
+\begin{abstract}
+LLM agent skills (folders of instructions, scripts and reference files that an agent loads on
+demand) are becoming commercial products, yet they ship as plain text that anyone can copy. We
+present \sys{}, a packaging scheme in which a skill is encrypted with HPKE to a public key that an
+AI provider publishes at a well-known URL on its own domain. The owner seals offline with no
+handshake, packages can be distributed through untrusted channels, and only the provider's servers
+can open them; clients send a reference and a licence and never receive the skill. Our prototype
+seals and opens a 10\,KB skill in under half a millisecond. We then measure the channel encryption
+cannot close: the model must read the skill, and its answers go to the user. Across eight
+synthetic skills, 24 extraction attacks and two open 7--8B models, 72--75\% of attack
+conversations disclose at least half of a skill's rules and 35--41\% reproduce it nearly verbatim.
+A confidentiality instruction reduces substantial extraction to 19\% and 46\%, but for one model
+at the cost of failing a third of legitimate tasks, mostly by refusing them. A de-obfuscating lexical output filter
+reduces substantial extraction to 1.6--3.1\% but blocks 12.5--25\% of benign replies, because
+models quote rules while applying them; embedding-similarity filtering is far weaker. Per-customer
+canaries appear in 98\% of verbatim leaks, enabling attribution. In a tool-use case study, scripts
+co-located with a code interpreter are extractable, while an owner-hosted tool protects the code
+but still reveals its rate table to ordinary queries. Sealing protects a skill's artifacts from
+copying; it does not make its content or function secret.
+\end{abstract}

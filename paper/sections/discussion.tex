@@ -1,0 +1,63 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{What sealing buys, and what it does not.}
+Sealing converts a skill from a file anyone can copy into an artifact that only named providers can
+open, and it keeps that file off every client. That closes the cheapest attack, copying the folder,
+and moves the contest to the model's output channel. There the evidence in \cref{sec:eval} is
+sobering: a skill that is in context can be extracted by a determined user unless the provider
+adds defences, and even with defences some content leaks through transformation and paraphrase.
+Sealing is therefore best understood as protection against \emph{redistribution}, plus a
+measurable reduction in \emph{extraction}, not as secrecy of the skill's content.
+
+\paragraph{Keep crown jewels out of context.}
+The one design that provides secrecy against $\mathcal{A}_{\text{query}}$ is to keep the valuable
+logic out of the model's context and sandbox altogether, behind an owner-hosted tool that returns
+conclusions rather than rules (\cref{sec:casestudy}). The sealed skill then carries only when and
+how to call the tool. This splits a skill into a \emph{protectable-from-copying} part (the
+instructions) and a \emph{secret} part (the tool), and we expect commercial skills to converge on
+this split.
+
+\paragraph{Utility is the price of every output defence.}
+Skills are useful precisely because the model acts on them, and acting on a rule often reveals it:
+an answer that cites ``rule TXR-3: a difference above 0.50 but below 2\% is a soft mismatch'' is
+both correct use and disclosure. Output formats that cite rule identifiers also hand the attacker
+the vocabulary for targeted queries. Owners who seal a skill should write it so that its outputs
+cite conclusions, not rule text, and providers should report the benign block rate of any filter
+they deploy alongside its leak reduction.
+
+\paragraph{Why no handshake.}
+Dropping the onboarding handshake makes \sys{} as easy to adopt as encrypting to a published key,
+and lets a provider support many owners without bilateral agreements. The costs are real: no
+signed terms, no audit feed and no revocation beyond not renewing licences. These can be layered
+on later without changing the package format, which is why we keep the base design minimal.
+
+\paragraph{Artifact versus function.}
+Everything \sys{} protect is an \emph{artifact}: the skill's text, code and data. Recent skill-stealing
+attacks reconstruct a skill's \emph{function} from ordinary task results without ever asking for its
+text~\citep{tsai2026daydreaming,hua2026behavioral}. No artifact-level protection, including an
+owner-hosted tool, prevents that, because selling task results is the product. Sealing should be
+judged by what it can deliver: the owner's verbatim work cannot be copied, redistributed or loaded
+into a competing product, and a leaked reconstruction can be attributed.
+
+\paragraph{Auditability.}
+A sealed skill is opaque to the customer who runs it, and skills are an established injection and
+supply-chain vector~\citep{schmotz2026skillinject,xu2026agentskills}. The provider is the one party
+that can open every sealed skill, so it is the natural place to scan them before execution, and the
+owner's signature gives provenance. Regulated customers may still need a named auditor, which the
+format supports as one more recipient with its own published key.
+
+\paragraph{Limitations.}
+Our extraction study uses two 7--8B open models run locally with greedy decoding and a single
+sample per prompt; frontier hosted models have stronger instruction-following and may be both
+more resistant to naive requests and more capable of faithful paraphrase. The corpus is eight
+synthetic skills of 290--360 words (eight to nine rules each) written for this study, and the 24 attacks are hand-written
+rather than optimised. The semantic filter's threshold is calibrated on the same benign prompts on
+which its block rate is reported, and benign rates rest on 32 tasks per configuration. Rule
+disclosure is judged by a 7B model constrained by mechanical evidence checks; our manual check of
+its decisions is small (85 decisions) and has not been repeated by an independent annotator. The tool-use case study is
+illustrative (six attacks and two probes per cell), and its outcomes depend on how reliably each
+model issues tool calls. Multi-turn filtering is evaluated post hoc: in a live deployment
+a blocked turn changes the rest of the conversation. The design has not been implemented by any AI
+provider; we are not aware of any provider that currently publishes a skill-sealing key or loads
+encrypted skills, so our provider is a mock.

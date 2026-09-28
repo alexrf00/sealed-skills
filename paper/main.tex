@@ -1,0 +1,54 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+
+\definecolor{codebg}{HTML}{F3F5F4}
+\lstset{basicstyle=\ttfamily\footnotesize, backgroundcolor=\color{codebg}, frame=none,
+  breaklines=true, columns=fullflexible, keepspaces=true, xleftmargin=4pt, xrightmargin=4pt,
+  aboveskip=6pt, belowskip=6pt}
+\setlist{itemsep=2pt, topsep=4pt}
+\emergencystretch=2em
+
+\newcommand{\sys}{Sealed Skills}
+\newcommand{\cek}{\mathsf{CEK}}
+
+\title{\textbf{Sealed Skills: Provider-Bound Encryption for LLM Agent Skills\\and the Limits of Confidential Context}}
+\author{Alex Miguel Rodr\'iguez Fern\'andez\\Independent Researcher}
+\date{}
+
+\begin{document}
+\maketitle
+
+\input{sections/abstract}
+\input{sections/intro}
+\input{sections/background}
+\input{sections/threat}
+\input{sections/design}
+\input{sections/security}
+\input{sections/implementation}
+\input{sections/evaluation}
+\input{sections/discussion}
+\input{sections/related}
+\input{sections/conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+\appendix
+\input{sections/appendix}
+
+\end{document}

@@ -1,0 +1,16 @@
+\section{Implementation}
+\label{sec:impl}
+
+We implemented \sys{} in Python in about 440 non-blank lines: HPKE key wrapping through the
+\texttt{pyhpke} library, STREAM over AES-256-GCM and Ed25519 through \texttt{cryptography}, the
+package format, provider key documents with key selection and pinning, owner-signed licences, the
+output filters, and a mock provider runtime that serves a local model through Ollama. A test suite
+of 16 cases checks round trips; that a non-recipient provider, or one relabelling itself as a
+recipient, cannot unwrap; that payload and manifest tampering and truncation are rejected; that a
+recipient entry transplanted into another package fails to unwrap; that adding a recipient leaves
+the payload unchanged; that a changed key under a pinned identifier is refused; and that expired,
+mis-scoped and forged licences fail. The bit-parallel LCS~\citep{lin2004rouge} used for ROUGE-L is
+checked against a dynamic-programming reference on random inputs.
+
+In every experiment below, each skill is sealed to the mock provider and opened through the same
+unsealing path a provider would run before its text is placed in the model's context.

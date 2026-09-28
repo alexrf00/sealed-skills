@@ -1,0 +1,56 @@
+\section{Introduction}
+\label{sec:intro}
+
+LLM agents increasingly acquire specialised abilities from \emph{skills}: directories holding
+instructions, scripts and reference files that the agent loads when a task calls for them
+\citep{anthropic2025skillsblog,agentskills2026spec}. A good skill encodes expertise that took time
+and money to produce, such as how a tax authority cross-checks a filing or how a firm scores a
+contract, and skills are starting to be sold. They ship as plain text. Whoever obtains the folder
+can read it, republish it, or load it into a competing product, and the licence terms attached to
+it enforce nothing.
+
+This paper asks what it would take to sell a skill that only a chosen AI provider can open, and
+how much protection that actually buys. We make three observations. First, the cryptography is
+straightforward and cheap: an owner can encrypt a skill to a public key the provider publishes, in
+the same way anyone can encrypt email to a published key, without the parties ever talking.
+Second, the protection depends on a strict architectural rule that is easy to get wrong: the skill
+must only ever be decrypted on the provider's servers, never in a client, because anything present
+on the user's device can be extracted by the user. Third, and most important, encryption cannot
+close the channel that matters most. To follow a skill, the model must read it in clear text, and
+the model's answers go to the user, who can ask for the skill directly, indirectly, or in
+disguise.
+
+\paragraph{Contributions.}
+\begin{itemize}
+  \item \textbf{Design.} \sys{}, a provider-bound packaging scheme for agent skills: HPKE key
+  wrapping to a key published at \texttt{/.well-known/sealed-skill-keys}, STREAM-encrypted
+  payloads, owner signatures, offline-verifiable licences, and per-customer canaries, with no
+  owner--provider handshake (\cref{sec:design}). We state the server-side decryption rule and why
+  it is necessary (\cref{sec:boundary}), and analyse security against five adversaries
+  (\cref{sec:security}).
+  \item \textbf{Implementation.} An open prototype with a mock provider, and measurements showing
+  sealing costs are negligible next to model inference (\cref{sec:rq1}).
+  \item \textbf{Measurement of the residual channel.} On eight synthetic multi-rule skills, 24
+  attacks and two open models, we quantify extraction from context, the effect and utility cost of
+  a guard instruction, and the trade-off curves of lexical and semantic output filters
+  (\cref{sec:rq2,sec:rq3}). We use an evidence-grounded judge for rule disclosure after finding that
+  an unconstrained LLM judge counts applying a rule as disclosing it.
+  \item \textbf{Scripts.} A tool-use case study showing that ``run-only'' scripts cannot be
+  enforced in a sandbox that also executes arbitrary code, and that owner-hosted tools protect
+  implementations but not function (\cref{sec:casestudy}).
+\end{itemize}
+
+\paragraph{Findings in brief.}
+Sealing removes every non-model path to a skill at negligible cost. Once a skill is in context,
+though, most of it can be extracted: without defences, 72--75\% of attack conversations disclosed
+at least half of a skill's rules. A guard instruction and a de-obfuscating lexical filter together
+reduce this to about 2\%, but block 12.5--19\% of legitimate replies, because models quote rules
+while using them. Sealing is therefore protection against copying and redistribution plus a
+measurable reduction in extraction, not secrecy. For content that must stay secret, the logic has
+to leave the model's context entirely, and even then its function remains observable, as recent
+skill-stealing work demonstrates~\citep{tsai2026daydreaming,hua2026behavioral}.
+
+The closest prior design, by \citet{vanwyk2023protect}, decrypts an encrypted prompt through a
+bridge placed ideally at the provider; we differ in using a published provider key with no
+handshake or bridge operator, in protecting whole skills including scripts, and in measuring the
+extraction channel (\cref{sec:related}).

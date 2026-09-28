@@ -1,0 +1,12 @@
+\begin{tabular}{llrrrrrr}
+\toprule
+& & \multicolumn{4}{c}{Attacks} & \multicolumn{2}{c}{Benign tasks} \\
+\cmidrule(lr){3-6}\cmidrule(lr){7-8}
+Model & Guard & Full & Subst. & Rules & Canary & Success & Rules \\
+\midrule
+Llama 3.1 8B & no & 35.4 & 71.9 & 70.4 & 42.2 & 100.0 & 20.1 \\
+Llama 3.1 8B & yes & 13.5 & 18.8 & 19.5 & 15.6 & 65.6 & 15.1 \\
+Qwen 2.5 7B & no & 41.1 & 74.5 & 74.3 & 46.9 & 96.9 & 14.0 \\
+Qwen 2.5 7B & yes & 18.8 & 46.4 & 46.6 & 20.8 & 96.9 & 14.9 \\
+\bottomrule
+\end{tabular}
